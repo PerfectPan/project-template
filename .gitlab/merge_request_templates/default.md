@@ -17,7 +17,7 @@ Allowed types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `buil
 ## Validation
 
 - [ ] Repository checks: `./scripts/check-repository.sh`
-- [ ] PR title: `./scripts/check-pr-title.sh "<title>"`
+- [ ] MR title: `./scripts/check-pr-title.sh "<title>"`
 - [ ] Format:
 - [ ] Lint:
 - [ ] Test:

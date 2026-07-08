@@ -1,0 +1,25 @@
+name: Review
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize, ready_for_review]
+  push:
+    branches: [main]
+
+jobs:
+  repository-checks:
+    name: repository checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./scripts/check-repository.sh
+
+  pr-title:
+    name: conventional PR title
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./scripts/check-pr-title.sh "$PR_TITLE"
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
