@@ -13,9 +13,12 @@ This repository is intended to become a maintainable, publishable project. Treat
 
 ## Project-Specific Commands
 
-Replace these placeholders after choosing the project stack:
+Keep the repository-hygiene command active, and replace the remaining placeholders after choosing the project stack:
 
 ```bash
+# Repository hygiene:
+./scripts/repository-check.sh
+
 # Format:
 
 # Lint:
@@ -26,7 +29,7 @@ Replace these placeholders after choosing the project stack:
 
 # Package or release dry-run:
 
-# Security or hygiene scan:
+# Security or package-specific hygiene scan:
 ```
 
 Do not claim implementation work is complete until the relevant commands pass, or until skipped commands are explained with concrete blockers.
@@ -50,6 +53,14 @@ When an AI agent completes implementation work:
 6. Create or reuse a GitHub Pull Request when the task is not landing directly on `main`.
 7. Include a delivery summary with motivation, implementation notes, validation, and follow-up risks.
 
+## Delivery and Review Evidence
+
+- Treat `docs/delivery.md`, the PR/MR template, and CI as one shared delivery contract.
+- PR/MR descriptions must include motivation, implementation notes, exact validation commands, skipped gates with reasons, and follow-up risks.
+- If a claim depends on logs, screenshots, package output, deployed behavior, or generated artifacts, attach or link the evidence in the PR/MR.
+- Update the PR/MR description after substantial code changes, review-driven revisions, rebases that change behavior, or validation reruns.
+- Keep GitHub PR and GitLab MR templates in sync if the project uses both hosting styles.
+
 ## Git
 
 - Branch names should be short and descriptive, such as `feat/release-source`.
@@ -69,4 +80,3 @@ rg --hidden --no-ignore -n "private-token|secret|internal-domain.example|HOME_PA
   --glob '!CONTRIBUTING.md' \
   --glob '!SECURITY.md'
 ```
-

@@ -12,6 +12,18 @@ assignees: ""
 ## Proposed Solution
 
 
+## Acceptance Criteria
+
+-
+
+## Validation Plan
+
+- Format:
+- Lint:
+- Test:
+- Build:
+- Package or release dry-run:
+
 ## Alternatives Considered
 
 
@@ -21,4 +33,5 @@ assignees: ""
 - Configuration:
 - Compatibility:
 - Documentation:
-
+- Security or privacy:
+- Rollout and rollback:
