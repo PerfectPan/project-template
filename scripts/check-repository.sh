@@ -63,7 +63,8 @@ required_files=(
   "scripts/check-repository.sh"
   "scripts/install-git-hooks.sh"
   "scripts/configure-github-repository.sh"
-  "rfcs/0000-template.md"
+  "specs/0000-template.md"
+  "docs/plans/0000-template.md"
 )
 
 missing=()

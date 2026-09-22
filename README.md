@@ -39,7 +39,8 @@ Use this template when creating a new project that should have consistent contri
 - `.github/workflows/review.yml` for generic repository and PR title checks.
 - `.githooks/pre-commit` for local commit-time repository checks.
 - `.gitlab/merge_request_templates/default.md` for GitLab-style MR summaries.
-- `rfcs/0000-template.md` for substantial design changes.
+- `specs/0000-template.md` for active product behavior.
+- `docs/plans/0000-template.md` for active technical designs and implementation plans.
 - `scripts/check-repository.sh` for local and CI repository checks.
 - `scripts/check-pr-title.sh` for conventional PR or MR title checks.
 - `scripts/install-git-hooks.sh` for installing local Git hooks.
@@ -50,4 +51,4 @@ Use this template when creating a new project that should have consistent contri
 
 Keep this repository generic. Do not add language-specific package files, framework defaults, generated output, or project-specific business logic.
 
-Keep collaboration policy in `AGENTS.md` and `CONTRIBUTING.md`, design proposals and decision history in `rfcs/`, and current product or engineering knowledge in `docs/`.
+Keep collaboration policy in `AGENTS.md` and `CONTRIBUTING.md`, active behavior in `specs/`, active technical design in `docs/plans/`, and current product or engineering knowledge in `docs/`.

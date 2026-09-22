@@ -25,19 +25,19 @@ Replace this section with project-specific setup instructions.
 ## Contribution Flow
 
 1. Open an issue or discussion for ambiguous work.
-2. Write an RFC before substantial changes to public behavior, configuration, trust boundaries, release flow, or repository structure.
+2. Choose Spec and Plan artifacts using the [Change Design Gate](#change-design-gate) before substantial work. Review the behavior and technical design before implementing that scope.
 3. Create a focused branch with a short descriptive name.
 4. Install local Git hooks with `./scripts/install-git-hooks.sh` if this checkout has not already done so.
 5. Identify the affected domain concepts, layer boundaries, data flow, and tests before changing code.
 6. Implement the change, keeping responsibilities separated and using existing project patterns.
 7. Add or update tests for behavior changes.
-8. Update `README.md`, `CHANGELOG.md`, `docs/`, `AGENTS.md`, `CONTRIBUTING.md`, or RFCs when user-facing behavior, architecture, development workflow, operations, or project policy changes.
+8. Update `README.md`, `CHANGELOG.md`, `docs/`, `AGENTS.md`, `CONTRIBUTING.md`, or the active Spec and Plan when user-facing behavior, architecture, development workflow, operations, or project policy changes.
 9. Run repository checks, title checks, and project-specific format, lint, test, build, and package checks.
 10. For a newly created GitHub repository, run the repository setup script with an admin-authorized account.
 11. Open a pull request or merge request with a conventional title, motivation, implementation notes, validation, evidence, skipped gates, and follow-up risks.
 12. Keep the PR/MR description current after review feedback, rebases, validation reruns, or scope changes.
 
-Small typo corrections, narrow documentation fixes, and repository metadata updates do not need an RFC.
+Small typo corrections, narrow documentation fixes, and repository metadata updates do not need a separate Spec and Plan.
 
 ## Required Checks
 
@@ -67,20 +67,34 @@ Replace these placeholders after choosing the project stack:
 # Package or release dry-run:
 ```
 
-## When to Write an RFC
+## SDD Workflow And Document Lifecycle
 
-Use `rfcs/` when a change affects:
+1. Record the problem, affected users or maintainers, in-scope behavior, non-goals, and acceptance conditions.
+2. Choose artifacts with the [Change Design Gate](#change-design-gate). Product work defaults to one behavioral Spec and one detailed Plan for the same deliverable. The Spec states interactions and acceptance scenarios. The Plan owns technical design, component and interface changes, data flow, implementation order, and verification.
+3. Review the behavior and technical design before implementing the affected scope. The Plan must resolve implementation decisions rather than leave them to the implementer. New behavior revises the Spec. New implementation decisions revise the Plan.
+4. Implement inside that boundary. Add evidence for each acceptance condition, or say why existing evidence is enough. Update current-state docs in the same change.
+5. Before retiring a completed Spec or Plan, move still-valid behavior, invariants, and operational limits into current-state docs and tests. The final delivery PR may delete the completed files. Keep an unfinished Spec or Plan active.
+6. Git history and the delivery PR keep the retired decision. Do not copy completed Specs or Plans into a second archive.
 
-- public behavior
-- install, deploy, or rollback safety
-- trust boundaries
-- configuration shape
-- release process
-- repository structure
-- long-term integration strategy
-- durable domain boundaries or data flow
+## Change Design Gate
 
-RFCs should describe the problem, decision drivers, goals, non-goals, proposed design, architecture impact, validation plan, rollout plan, rollback plan, alternatives, risks, and open questions.
+Every change needs a requirement record. Use the smallest set of artifacts that makes behavior and implementation reviewable.
+
+| Change type | Required artifact |
+| --- | --- |
+| Product behavior | One Spec plus one detailed Plan for the same deliverable |
+| Technical refactor without changed user behavior | Detailed Plan with compatibility and acceptance conditions |
+| Narrow maintenance, tests, or documentation | Requirement and PR checklist; a separate Plan only when useful |
+
+A Spec defines observable interactions, scope, failure behavior, and acceptance examples. Use stable scenario IDs and Given/When/Then where useful. Link scenarios to tests. A Spec does not prescribe components, interfaces, or execution order. Keep active Specs under [`specs/`](specs/). A small change may keep both sections in the PR description. Split only when each slice has an independently demonstrable outcome.
+
+Shared architecture, compatibility, security, and recovery decisions belong in a reviewed Plan. After implementation, move lasting constraints into current-state architecture or operations docs. This template does not keep an RFC directory. Removing a proposal does not mark unimplemented ideas as delivered.
+
+## Implementation Plans
+
+[`docs/plans/`](docs/plans/) contains active technical design documents. Copy [`0000-template.md`](docs/plans/0000-template.md) and keep only the sections that apply. A product plan links its paired Spec. Explain the current constraints, the decisions, the boundaries, the failure and rollback behavior, and how the change will be verified. A file list alone is not a design.
+
+Keep unknown owners, dates, and interfaces marked "unconfirmed". A plan may make feature-specific technical decisions, but it cannot silently override current architecture. At completion, migrate lasting constraints into current-state docs and tests, then delete the completed Spec and plan in the final delivery PR. Keep unfinished scope visible.
 
 ## Repository Architecture
 
@@ -92,7 +106,7 @@ Maintain the repository around real responsibilities:
 - UI, CLI, or API entrypoints translate user or protocol input into application calls.
 - Test fixtures and helpers belong near the tests or in clearly named test-support areas.
 
-Avoid splitting code only to satisfy a mechanical one-export rule. Split when a file mixes responsibilities, a component or service needs independent testing, a boundary becomes reusable, or a change would otherwise make review harder. When adding a top-level directory or durable module boundary, document the reason in the PR/MR and use an RFC when the structure affects long-term integration.
+Avoid splitting code only to satisfy a mechanical one-export rule. Split when a file mixes responsibilities, a component or service needs independent testing, a boundary becomes reusable, or a change would otherwise make review harder. When adding a top-level directory or durable module boundary, document the reason in the PR/MR and record the technical choice in a Plan when the structure affects long-term integration.
 
 ## Documentation Standards
 
@@ -101,7 +115,8 @@ Keep each documentation surface focused:
 - Use `README.md` for orientation, quick start, and current user-facing behavior.
 - Use `CONTRIBUTING.md` for contribution workflow, review expectations, and repository policy.
 - Use `AGENTS.md` for AI-agent instructions.
-- Use `rfcs/` for substantial proposals, decision records, and long-term design changes before they become current project facts.
+- Use `specs/` for active product behavior and acceptance contracts.
+- Use `docs/plans/` for active technical designs and implementation plans. Migrate lasting decisions into current-state docs.
 - Use `docs/` for durable current-state knowledge: architecture, development guides, operational runbooks, references, and onboarding tutorials.
 
 Follow `docs/README.md` when adding or reorganizing project documentation. Update docs in the same change as behavior, configuration, command, API, deployment, architecture, or operational changes. Keep examples runnable when possible; otherwise, label them as illustrative and explain the validation gap.

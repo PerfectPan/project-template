@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Replaced the RFC directory with a behavioral Spec plus a detailed technical Plan. Lasting constraints move to current-state docs; Git history keeps retired artifacts.
 - Initial project template.
 - Added a generic review workflow for repository checks and conventional PR titles.
 - Added local and CI-friendly repository checks for required template files, tracked local artifacts, obvious secrets, private paths, and review-template drift.

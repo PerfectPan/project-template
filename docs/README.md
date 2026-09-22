@@ -14,17 +14,18 @@ Keep collaboration policy in `CONTRIBUTING.md`, AI-agent instructions in `AGENTS
 
 Do not create empty directories just to match this list. Add a section when the project has real documentation for that reader need.
 
-## RFC Boundary
+## Spec And Plan Boundary
 
-Use `rfcs/` for proposals, decision records, and major changes before they become current project facts. After an RFC is accepted and implemented, update the relevant `docs/` page so architecture and development documentation describe the current state.
+- [`../specs/`](../specs/) declares active product behavior and acceptance contracts.
+- [`plans/`](plans/) contains active technical designs and implementation plans.
 
-RFCs explain why a decision was made. `docs/` explains how the project works now.
+The Change Design Gate in [`CONTRIBUTING.md`](../CONTRIBUTING.md) decides which artifacts a change needs. After delivery, lasting constraints belong in current-state `docs/`. Git history keeps the retired Spec or Plan.
 
 ## Writing Standards
 
 - Give every durable document one clear audience, purpose, and owner area.
-- Prefer current-state language over historical narration in `docs/`; link to RFCs for decision history.
+- Prefer current-state language over historical narration in `docs/`; link to the delivery PR for decision history.
 - Keep examples runnable when practical; otherwise label them as illustrative and explain the validation gap.
-- Link to source files, commands, schemas, dashboards, or RFCs when they are the real source of truth.
+- Link to source files, commands, schemas, or dashboards when they are the real source of truth.
 - Update docs in the same change as behavior, configuration, command, API, deployment, architecture, or operational changes.
 - Keep private tokens, internal hostnames, personal filesystem paths, generated logs, and environment-specific secrets out of documentation.
