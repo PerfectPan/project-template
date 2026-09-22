@@ -48,7 +48,7 @@ Do not claim implementation work is complete until the relevant commands pass, o
 For non-trivial changes:
 
 1. Understand the requested behavior, affected domain concepts, ownership boundaries, and data flow.
-2. Decide whether the change needs an RFC before implementation.
+2. Follow the Spec/Plan selection rules in `CONTRIBUTING.md`. Review required design artifacts before implementation. Record technical decisions in the Plan and migrate lasting constraints to current-state documentation.
 3. Keep the implementation scoped to the task and nearby code.
 4. Update tests and documentation when behavior, public contracts, or workflow expectations change.
 5. Ensure local Git hooks are installed for the checkout when practical.
@@ -62,13 +62,13 @@ For non-trivial changes:
 - Keep domain rules, application services, infrastructure adapters, UI/CLI entrypoints, persistence, and test fixtures separated when those responsibilities exist.
 - Do not introduce a shared abstraction unless it removes real duplication, clarifies a boundary, or matches an existing project pattern.
 - When a file starts mixing multiple responsibilities or layers, split by responsibility rather than by arbitrary size.
-- Substantial changes to public behavior, configuration shape, trust boundaries, release process, or repository structure should be proposed in `rfcs/` first.
+- Substantial product behavior uses one Spec plus one detailed Plan. Technical refactors use a Plan. Record technical choices there before implementation.
 
 ## Documentation
 
 - Keep `README.md` focused on orientation, quick start, and current user-facing behavior.
 - Use `CONTRIBUTING.md` for contribution workflow.
-- Use `rfcs/` for substantial design proposals.
+- Use `specs/` for active product behavior and `docs/plans/` for active technical designs. Current-state documentation owns implemented behavior.
 - Use `docs/` for durable current-state knowledge such as architecture, development guides, operational runbooks, references, and onboarding tutorials.
 - Update `CHANGELOG.md` for user-facing changes unless the change is docs-only or repository-only.
 - When behavior, configuration, commands, APIs, deployment, architecture, or operations change, update the relevant docs in the same PR/MR or explain why no docs changed.
