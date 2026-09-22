@@ -1,133 +1,133 @@
-# <技术方案名称>
+# <Design title>
 
-Copy this file when starting a plan. Keep the sections that apply to a new system, a change, or a migration, and delete the rest. If a owner, reviewer, or date is unknown, write「待确认」. Do not invent them.
+Copy this file when starting a plan. Keep the sections that apply to a new system, a change, or a migration, and delete the rest. If an owner, reviewer, or date is unknown, write "unconfirmed". Do not invent them.
 
 Writing and review rules live in the `technical-design-docs` skill when it is installed. This file is only the document shape.
 
-<!-- 按新建、改造或迁移场景保留适用章节；简单方案可合并章节，删掉不相关的小节。负责人、评审人、日期没确定就写「待确认」，不要编造。 -->
+<!-- Keep the sections that apply to a new system, a change, or a migration. Merge sections in a small design and delete the rest. If an owner, reviewer, or date is unknown, write "unconfirmed". Do not invent them. -->
 
-- 状态：草稿 / 评审中 / 已确认
-- 负责人：<姓名或团队>
-- 评审人：<姓名或团队>
-- 最后更新：<日期>
-- 对应 Spec：<路径，没有则写无>
+- Status: draft / in review / accepted
+- Owner: <name or team>
+- Reviewer: <name or team>
+- Last updated: <date>
+- Paired Spec: <path, or none>
 
-## 目录
+## Contents
 
-<!-- 列出最终保留的一级章节，评审前删除本注释。 -->
+<!-- List the top-level sections you keep. Delete this comment before review. -->
 
-## 1. 背景与目标
+## 1. Background and goals
 
-### 1.1 现状与约束
+### 1.1 Current behavior and constraints
 
-说明和这次方案有关的已有行为与限制；新建方案写清需求来源和外部约束。重要结论要给出代码、接口定义、数据或历史决策作为依据。
+State the existing behavior and limits that this design depends on. For a new system, state the demand and the external constraints. Important conclusions need evidence from code, an interface, data, or an earlier decision.
 
-### 1.2 需要解决的问题
+### 1.2 Problem
 
-说明需要解决的具体问题；改造或迁移场景写清变更动机，包括成本、风险、故障模式或能力限制。
+State the concrete problem. For a change or migration, state why it is worth changing: cost, risk, failure mode, or a missing capability.
 
-### 1.3 目标与成功标准
+### 1.3 Goals and success criteria
 
-列出方案必须达到且能够验证的结果。
+List results the design must achieve and that someone can check.
 
-### 1.4 非目标
+### 1.4 Non-goals
 
-说明这次明确不处理的相关问题，避免评审范围越扩越大。
+State related problems this design will not handle, so the review does not expand.
 
-## 2. 概要设计
+## 2. Outline
 
-### 2.1 设计原则
+### 2.1 Design principles
 
-只保留会实际约束方案选择的原则。
+Keep only principles that actually constrain a choice.
 
-### 2.2 系统边界与职责
+### 2.2 Boundaries and responsibilities
 
-说明参与系统或领域、责任方及职责划分；存在职责转移时明确变化。关系复杂时配图。
+Name the systems or domains involved, who owns each, and what each owns. If ownership moves, say what changes. Add a diagram when the relationship is hard to follow in prose.
 
-### 2.3 主链路
+### 2.3 Main path
 
-说明目标链路。只有现状和目标的差异会影响评审判断时，才补前后对照；新建方案不用画现状图。
+Describe the target path. Add a before/after comparison only when the difference changes the review. A new system does not need a diagram of the current state.
 
-### 2.4 核心设计决策
+### 2.4 Design decisions
 
-逐项说明关键选择、考虑过的替代方案和选择理由。
+For each important choice, state the alternatives considered and why this one was chosen.
 
-## 3. 详细设计
+## 3. Detailed design
 
-<!-- 按实际需要保留以下小节，并补充领域特有内容。 -->
+<!-- Keep the subsections you need, and add domain-specific ones. -->
 
-### 3.1 入口与请求链路
+### 3.1 Entry points and request path
 
-### 3.2 接口定义
+### 3.2 Interfaces
 
-### 3.3 领域模型、状态与数据归属
+### 3.3 Domain model, state, and data ownership
 
-### 3.4 状态流转与生命周期
+### 3.4 State transitions and lifecycle
 
-### 3.5 并发、幂等与重试
+### 3.5 Concurrency, idempotency, and retries
 
-### 3.6 异常处理与恢复
+### 3.6 Failures and recovery
 
-### 3.7 兼容性与迁移策略
+### 3.7 Compatibility and migration
 
-### 3.8 安全与隐私
+### 3.8 Security and privacy
 
-### 3.9 监控、日志与打点
+### 3.9 Metrics, logs, and traces
 
-## 4. 灰度与稳定性
+## 4. Rollout and stability
 
-<!-- 涉及上线或迁移时保留；本地工具等场景按实际风险说明发布和恢复方式。 -->
+<!-- Keep this when the change ships or migrates data. For a local tool, describe release and recovery at the actual risk. -->
 
-### 4.1 灰度门禁与放量阶段
+### 4.1 Gates and rollout stages
 
-说明准入条件、放量步骤和停止放量的条件。
+State the entry conditions, the rollout steps, and when to stop widening the rollout.
 
-### 4.2 观测指标与告警
+### 4.2 Signals and alerts
 
-列出成功、失败、延迟和质量指标，并明确责任方。
+List success, failure, latency, and quality signals, and who owns each.
 
-### 4.3 回滚方案
+### 4.3 Rollback
 
-说明回滚触发条件、操作步骤、数据影响和预期恢复时间。
+State the trigger, the steps, the data impact, and the expected recovery time.
 
-## 5. 验证方案
+## 5. Verification
 
-<!-- 按改动风险保留验证项；本地工具或低风险改动写清关键验证即可，不必凑齐四类。 -->
+<!-- Keep the checks that match the risk. A local tool or a low-risk change needs the important checks, not all four. -->
 
-### 5.1 功能验证
+### 5.1 Functional checks
 
-### 5.2 异常与重试验证
+### 5.2 Failure and retry checks
 
-### 5.3 兼容性验证
+### 5.3 Compatibility checks
 
-### 5.4 端到端验收
+### 5.4 End-to-end acceptance
 
-## 6. 开发计划与工作量
+## 6. Delivery plan and effort
 
-涉及多人协同交付时保留。负责人和日期没确认就注明待确认；工作量估算写清依据、假设和依赖，不作为团队承诺。
+Keep this when more than one person delivers the change. Mark unconfirmed owners and dates as "unconfirmed". Estimates must state their basis, assumptions, and dependencies. An estimate is not a team commitment.
 
-### 6.1 改动拆分
+### 6.1 Work split
 
-| 组件或领域 | 改动内容 | 负责人 | 前置依赖 | 工作量 |
+| Component or domain | Change | Owner | Depends on | Effort |
 | --- | --- | --- | --- | --- |
-| <组件> | <交付内容> | <负责人> | <依赖> | <时间范围或人日> |
+| <component> | <deliverable> | <owner> | <dependency> | <range or person-days> |
 
-### 6.2 开发与联调排期
+### 6.2 Schedule
 
-| 阶段 | 工作内容 | 前置条件 | 预计时间 | 交付物 |
+| Stage | Work | Precondition | When | Deliverable |
 | --- | --- | --- | --- | --- |
-| <阶段> | <工作内容> | <前置条件> | <时间范围> | <产物或里程碑> |
+| <stage> | <work> | <precondition> | <range> | <artifact or milestone> |
 
-### 6.3 发布顺序与里程碑
+### 6.3 Release order and milestones
 
-说明跨组件兼容关系、必要的发布顺序，以及用于跟踪进度的关键里程碑。
+State cross-component compatibility, the required release order, and the milestones used to track progress.
 
-## 7. 风险、待确认项与后续工作
+## 7. Risks, open questions, and follow-up
 
-| 事项 | 类型 | 影响 | 负责人 | 解决方式或截止时间 |
+| Item | Type | Impact | Owner | Next step or deadline |
 | --- | --- | --- | --- | --- |
-| <事项> | 风险 / 待确认 / 后续工作 | <影响> | <负责人> | <下一步> |
+| <item> | risk / open question / follow-up | <impact> | <owner> | <next step> |
 
-## 附录
+## Appendix
 
-会打断主评审链路的证据、被否决方案和详细参考资料可以放在这里。
+Put evidence, rejected options, and long references here when they would break the main review.
