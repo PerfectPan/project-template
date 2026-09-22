@@ -1,9 +1,9 @@
 # Implementation Plans
 
-Active Plans own the technical design and execution sequence. Product work pairs one Plan with one behavioral Spec. A technical refactor may use a Plan alone. Split only for independently deliverable work and record dependencies.
+A plan is one technical design document, not a task checklist. Product work pairs it with one behavioral Spec. A technical refactor may use a plan alone.
 
-Start from [`0000-template.md`](0000-template.md). Link the Spec and current architecture. Resolve component responsibilities, interface changes, data flow, tradeoffs, failure handling, and recovery before implementation. Each task identifies what changes, its owning files or components, tests, and an exit condition.
+Start from [`0000-template.md`](0000-template.md). Keep only the sections the change needs: background, outline, detailed design, rollout, verification, and delivery. Delete the rest. Unknown owners and dates stay「待确认」.
 
-Keep unresolved designs blocked. Feature-specific technical decisions belong here. Shared decisions follow the same review rules in [CONTRIBUTING](../../CONTRIBUTING.md#change-design-gate). A file inventory alone is not a Plan.
+The document shape matches the `technical-design-docs` skill. Install that skill for writing and review rules. This repository does not copy those rules.
 
-At completion, migrate enduring constraints to current-state documentation and tests, then delete the paired completed Spec and Plan in the final delivery PR. Preserve unfinished scope. Follow the [SDD lifecycle](../../CONTRIBUTING.md#sdd-workflow-and-document-lifecycle).
+Shared decisions follow [CONTRIBUTING](../../CONTRIBUTING.md#change-design-gate). At completion, move lasting constraints into current-state docs and tests, then delete the finished Spec and plan in the final delivery PR. Keep unfinished scope. Follow the [SDD lifecycle](../../CONTRIBUTING.md#sdd-workflow-and-document-lifecycle).

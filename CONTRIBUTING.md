@@ -92,9 +92,9 @@ Shared architecture, compatibility, security, and recovery decisions belong in a
 
 ## Implementation Plans
 
-[`docs/plans/`](docs/plans/) contains active technical designs and implementation plans. A product Plan links its paired Spec. Explain the chosen approach, component responsibilities, changed interfaces, data flow, tests, compatibility, rollout, and rollback. Each task names what changes, where, and the evidence required to finish it. A file list alone is not a design.
+[`docs/plans/`](docs/plans/) contains active technical design documents. Copy [`0000-template.md`](docs/plans/0000-template.md) and keep only the sections that apply. A product plan links its paired Spec. Explain the current constraints, the decisions, the boundaries, the failure and rollback behavior, and how the change will be verified. A file list alone is not a design.
 
-Keep the Plan blocked while a material decision is unresolved. A Plan may make feature-specific technical decisions, but it cannot silently override current architecture. At completion, migrate lasting constraints into current-state docs and tests, then delete the completed Spec and Plan in the final delivery PR. Keep unfinished scope visible.
+Keep unknown owners, dates, and interfaces marked「待确认」. A plan may make feature-specific technical decisions, but it cannot silently override current architecture. At completion, migrate lasting constraints into current-state docs and tests, then delete the completed Spec and plan in the final delivery PR. Keep unfinished scope visible.
 
 ## Repository Architecture
 

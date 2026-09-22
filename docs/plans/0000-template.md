@@ -1,44 +1,133 @@
-# Implementation Plan: Title
+# <技术方案名称>
 
-Use this template for an active technical design and implementation sequence. Follow the [SDD Workflow And Document Lifecycle](../../CONTRIBUTING.md#sdd-workflow-and-document-lifecycle) for the complete workflow.
+Copy this file when starting a plan. Keep the sections that apply to a new system, a change, or a migration, and delete the rest. If a owner, reviewer, or date is unknown, write「待确认」. Do not invent them.
 
-## Status And Authority
+Writing and review rules live in the `technical-design-docs` skill when it is installed. This file is only the document shape.
 
-- Status: Blocked or Active
-- Governing Spec:
-- Current architecture:
-- Scope:
+<!-- 按新建、改造或迁移场景保留适用章节；简单方案可合并章节，删掉不相关的小节。负责人、评审人、日期没确定就写「待确认」，不要编造。 -->
 
-## Preconditions
+- 状态：草稿 / 评审中 / 已确认
+- 负责人：<姓名或团队>
+- 评审人：<姓名或团队>
+- 最后更新：<日期>
+- 对应 Spec：<路径，没有则写无>
 
-- Required behavior and technical-design review state
-- Required compatibility baseline
+## 目录
 
-## Completion Contract
+<!-- 列出最终保留的一级章节，评审前删除本注释。 -->
 
-- Checkable final conditions
+## 1. 背景与目标
 
-## Technical Design
+### 1.1 现状与约束
 
-- Chosen approach and relevant alternatives:
-- Component responsibilities and changed interfaces:
-- Data flow and persistence:
-- Failure handling, security and compatibility:
-- Dependencies and unresolved decisions (keep Blocked until resolved):
+说明和这次方案有关的已有行为与限制；新建方案写清需求来源和外部约束。重要结论要给出代码、接口定义、数据或历史决策作为依据。
 
-## Execution Order
+### 1.2 需要解决的问题
 
-### Task 1: Name
+说明需要解决的具体问题；改造或迁移场景写清变更动机，包括成本、风险、故障模式或能力限制。
 
-- Files:
-- Change:
-- Tests:
-- Exit condition:
+### 1.3 目标与成功标准
 
-## Validation Ledger
+列出方案必须达到且能够验证的结果。
 
-List exact commands and evidence required for each implementation PR.
+### 1.4 非目标
 
-## Rollback Per Batch
+说明这次明确不处理的相关问题，避免评审范围越扩越大。
 
-State the smallest reversible batch and any persisted-data constraint.
+## 2. 概要设计
+
+### 2.1 设计原则
+
+只保留会实际约束方案选择的原则。
+
+### 2.2 系统边界与职责
+
+说明参与系统或领域、责任方及职责划分；存在职责转移时明确变化。关系复杂时配图。
+
+### 2.3 主链路
+
+说明目标链路。只有现状和目标的差异会影响评审判断时，才补前后对照；新建方案不用画现状图。
+
+### 2.4 核心设计决策
+
+逐项说明关键选择、考虑过的替代方案和选择理由。
+
+## 3. 详细设计
+
+<!-- 按实际需要保留以下小节，并补充领域特有内容。 -->
+
+### 3.1 入口与请求链路
+
+### 3.2 接口定义
+
+### 3.3 领域模型、状态与数据归属
+
+### 3.4 状态流转与生命周期
+
+### 3.5 并发、幂等与重试
+
+### 3.6 异常处理与恢复
+
+### 3.7 兼容性与迁移策略
+
+### 3.8 安全与隐私
+
+### 3.9 监控、日志与打点
+
+## 4. 灰度与稳定性
+
+<!-- 涉及上线或迁移时保留；本地工具等场景按实际风险说明发布和恢复方式。 -->
+
+### 4.1 灰度门禁与放量阶段
+
+说明准入条件、放量步骤和停止放量的条件。
+
+### 4.2 观测指标与告警
+
+列出成功、失败、延迟和质量指标，并明确责任方。
+
+### 4.3 回滚方案
+
+说明回滚触发条件、操作步骤、数据影响和预期恢复时间。
+
+## 5. 验证方案
+
+<!-- 按改动风险保留验证项；本地工具或低风险改动写清关键验证即可，不必凑齐四类。 -->
+
+### 5.1 功能验证
+
+### 5.2 异常与重试验证
+
+### 5.3 兼容性验证
+
+### 5.4 端到端验收
+
+## 6. 开发计划与工作量
+
+涉及多人协同交付时保留。负责人和日期没确认就注明待确认；工作量估算写清依据、假设和依赖，不作为团队承诺。
+
+### 6.1 改动拆分
+
+| 组件或领域 | 改动内容 | 负责人 | 前置依赖 | 工作量 |
+| --- | --- | --- | --- | --- |
+| <组件> | <交付内容> | <负责人> | <依赖> | <时间范围或人日> |
+
+### 6.2 开发与联调排期
+
+| 阶段 | 工作内容 | 前置条件 | 预计时间 | 交付物 |
+| --- | --- | --- | --- | --- |
+| <阶段> | <工作内容> | <前置条件> | <时间范围> | <产物或里程碑> |
+
+### 6.3 发布顺序与里程碑
+
+说明跨组件兼容关系、必要的发布顺序，以及用于跟踪进度的关键里程碑。
+
+## 7. 风险、待确认项与后续工作
+
+| 事项 | 类型 | 影响 | 负责人 | 解决方式或截止时间 |
+| --- | --- | --- | --- | --- |
+| <事项> | 风险 / 待确认 / 后续工作 | <影响> | <负责人> | <下一步> |
+
+## 附录
+
+会打断主评审链路的证据、被否决方案和详细参考资料可以放在这里。
