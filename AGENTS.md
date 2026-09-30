@@ -92,7 +92,7 @@ When an AI agent completes implementation work:
 ## Review Evidence
 
 - PR/MR titles must be English and follow `type(scope): summary`, including bot-generated release and dependency PRs such as `chore(release): version packages`; use `scripts/check-pr-title.sh` to verify them.
-- PR/MR descriptions must keep every template section and include motivation, implementation notes, exact validation commands, skipped gates with reasons, and follow-up risks. Do not add agent attribution lines such as "Generated with <tool>". Verify the body with `scripts/check-pr-body.sh` before opening or updating the PR/MR.
+- PR/MR descriptions must keep every template section and include motivation, implementation notes, exact validation commands, skipped gates with reasons, and follow-up risks. Do not add agent attribution lines such as "Generated with <tool>". Verify the body with `scripts/check-pr-body.sh` before opening or updating the PR/MR. Bot-opened PRs are exempt from the description check, not the title check.
 - If a claim depends on logs, screenshots, package output, deployed behavior, or generated artifacts, attach or link the evidence in the PR/MR.
 - Update the PR/MR description after substantial code changes, review-driven revisions, rebases that change behavior, or validation reruns.
 - Keep GitHub PR and GitLab MR templates in sync if the project uses both hosting styles.
