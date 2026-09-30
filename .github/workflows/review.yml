@@ -23,3 +23,13 @@ jobs:
       - run: ./scripts/check-pr-title.sh "$PR_TITLE"
         env:
           PR_TITLE: ${{ github.event.pull_request.title }}
+
+  pr-body:
+    name: PR description
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: printf '%s\n' "$PR_BODY" | ./scripts/check-pr-body.sh
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
