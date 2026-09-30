@@ -16,7 +16,7 @@ Use this template when creating a new project that should have consistent contri
    ./scripts/install-git-hooks.sh
    ```
 
-6. Enable or replace the stack-specific CI example in `.github/workflows/ci.yml.example`.
+6. Replace `.github/workflows/ci.yml.example` with a real `.github/workflows/ci.yml` for the project stack; the repository check accepts either file.
 7. Keep `.github/workflows/review.yml` enabled for generic review checks.
 8. Configure GitHub repository protection after the new repository is created:
 

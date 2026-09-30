@@ -56,7 +56,8 @@ required_files=(
   ".github/ISSUE_TEMPLATE/bug_report.md"
   ".github/ISSUE_TEMPLATE/feature_request.md"
   ".github/workflows/review.yml"
-  ".github/workflows/ci.yml.example"
+  # Alternatives separated by "|": a project replaces the example with its real CI.
+  ".github/workflows/ci.yml|.github/workflows/ci.yml.example"
   ".gitlab/merge_request_templates/default.md"
   ".githooks/pre-commit"
   "scripts/check-pr-body.sh"
@@ -69,14 +70,26 @@ required_files=(
   "docs/plans/0000-template.md"
 )
 
-missing=()
-for file in "${required_files[@]}"; do
+file_present() {
   if [[ "$staged" == true ]]; then
-    if ! git cat-file -e ":$file" 2>/dev/null; then
-      missing+=("$file")
+    git cat-file -e ":$1" 2>/dev/null
+  else
+    [[ -f "$1" ]]
+  fi
+}
+
+missing=()
+for entry in "${required_files[@]}"; do
+  found=false
+  IFS='|' read -r -a alternatives <<<"$entry"
+  for file in "${alternatives[@]}"; do
+    if file_present "$file"; then
+      found=true
+      break
     fi
-  elif [[ ! -f "$file" ]]; then
-    missing+=("$file")
+  done
+  if [[ "$found" == false ]]; then
+    missing+=("${entry//|/ or }")
   fi
 done
 
