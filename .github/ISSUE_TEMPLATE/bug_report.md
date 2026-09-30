@@ -40,4 +40,3 @@ assignees: ""
 - Release or rollback urgency:
 
 ## Additional Context
-

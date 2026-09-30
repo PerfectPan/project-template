@@ -10,4 +10,3 @@ Before making changes:
 4. Do not commit local config, credentials, generated logs, temporary workspaces, build artifacts, or machine-specific paths.
 
 For substantial changes, follow the Spec/Plan selection rules in `CONTRIBUTING.md`.
-

@@ -18,4 +18,3 @@ Please include:
 ## Sensitive Data
 
 Do not include tokens, private keys, local credentials, internal hostnames, or personal filesystem paths in issues, pull requests, commits, logs, screenshots, or test fixtures.
-

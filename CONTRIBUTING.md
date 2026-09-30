@@ -184,7 +184,9 @@ Template files do not carry GitHub branch protection settings into every new rep
 ./scripts/configure-github-repository.sh --repo OWNER/REPO --apply
 ```
 
-The setup script requires a GitHub account or token with permission to edit repository settings. It protects the default branch by requiring pull requests, one approving review, fresh reviews after new pushes, linear history, resolved conversations, and the `Review` workflow checks named `repository checks`, `conventional PR title`, and `PR description`.
+The setup script requires a GitHub account or token with permission to edit repository settings. It protects the default branch by requiring pull requests, one approving review (fresh after new pushes), linear history, resolved conversations, and the `Review` workflow checks named `repository checks`, `conventional PR title`, and `PR description`.
+
+A repository with a single maintainer cannot approve its own pull requests; pass `--approvals 0` to keep the other protections without a review requirement. Add the project's CI job names with `--check NAME` (repeatable) so they are required too. If the repository already uses a ruleset, add these checks to the ruleset instead of layering classic branch protection on top.
 
 ## Security Reports
 
