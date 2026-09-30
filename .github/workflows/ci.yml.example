@@ -13,4 +13,3 @@ jobs:
       - uses: actions/checkout@v4
       # Replace with project-specific setup and validation commands.
       - run: echo "Configure CI for this project"
-

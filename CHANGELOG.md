@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- `configure-github-repository.sh` accepts `--approvals N` (use 0 for a single maintainer) and repeatable `--check NAME` for project CI jobs.
+- Removed trailing blank lines that failed `git diff --cached --check` in repositories copying the template files.
 - Plans now pair technical decisions with a detailed execution plan: preconditions, completion contract, ordered tasks with exit conditions, validation ledger, and rollback per batch.
 - Added `scripts/check-pr-body.sh` and a `PR description` review job that require template sections, real Summary and Validation content, and no agent attribution lines.
 - PR title checks now reject CJK characters; bot-generated PRs must use conventional titles too.
