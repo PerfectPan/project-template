@@ -59,10 +59,12 @@ required_files=(
   ".github/workflows/ci.yml.example"
   ".gitlab/merge_request_templates/default.md"
   ".githooks/pre-commit"
+  "scripts/check-pr-body.sh"
   "scripts/check-pr-title.sh"
   "scripts/check-repository.sh"
   "scripts/install-git-hooks.sh"
   "scripts/configure-github-repository.sh"
+  "scripts/lib/review-sections.sh"
   "specs/0000-template.md"
   "docs/plans/0000-template.md"
 )
@@ -96,7 +98,7 @@ if [[ -n "$tracked_artifacts" ]]; then
 fi
 
 secret_pattern='AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9_]{36,}|xox[baprs]-[A-Za-z0-9-]{10,}|-----BEGIN ([A-Z]+ )?PRIVATE KEY-----'
-private_path_pattern='(/Users/[^[:space:]`"'"'"'<>]+|/home/[^[:space:]`"'"'"'<>]+|C:\\Users\\)'
+private_path_pattern='(^|[[:space:]`"'"'"'(<>=])(/Users/[^[:space:]`"'"'"'<>]+|/home/[^[:space:]`"'"'"'<>]+|C:\\Users\\)'
 placeholder_pattern='private-token|internal-domain\.example|HOME_PATH_PLACEHOLDER'
 findings_file="$(mktemp "${TMPDIR:-/tmp}/check-repository-findings.XXXXXX")"
 trap 'rm -f "$findings_file"' EXIT
@@ -116,20 +118,18 @@ if git grep "${grep_args[@]}" -- . \
   exit 1
 fi
 
-required_review_sections=(
-  "Summary"
-  "Motivation"
-  "Implementation Notes"
-  "Validation"
-  "Evidence"
-  "Safety Checklist"
-  "Follow-up Risks"
-)
+if [[ "$staged" == true ]]; then
+  # Bash 3.2 cannot source process substitution, so eval the staged list.
+  eval "$(git show ":scripts/lib/review-sections.sh")"
+else
+  # shellcheck source=scripts/lib/review-sections.sh
+  source "scripts/lib/review-sections.sh"
+fi
 
 for template in ".github/pull_request_template.md" ".gitlab/merge_request_templates/default.md"; do
   for section in "${required_review_sections[@]}"; do
     if [[ "$staged" == true ]]; then
-      if ! git show ":$template" | grep -qE "^## ${section}$"; then
+      if ! git show ":$template" | grep -E "^## ${section}$" >/dev/null; then
         fail "$template is missing required section: $section"
       fi
     elif ! grep -qE "^## ${section}$" "$template"; then

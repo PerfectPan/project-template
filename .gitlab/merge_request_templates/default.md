@@ -1,4 +1,4 @@
-Title format: `type(scope): summary`
+Title format: `type(scope): summary`, in English.
 
 Allowed types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`.
 
@@ -18,6 +18,7 @@ Allowed types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `buil
 
 - [ ] Repository checks: `./scripts/check-repository.sh`
 - [ ] MR title: `./scripts/check-pr-title.sh "<title>"`
+- [ ] MR description: `./scripts/check-pr-body.sh <body-file>`
 - [ ] Format:
 - [ ] Lint:
 - [ ] Test:

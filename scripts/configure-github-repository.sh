@@ -74,7 +74,8 @@ payload="$(cat <<'JSON'
     "strict": true,
     "contexts": [
       "repository checks",
-      "conventional PR title"
+      "conventional PR title",
+      "PR description"
     ]
   },
   "enforce_admins": true,

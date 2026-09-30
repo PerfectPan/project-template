@@ -17,4 +17,12 @@ if [[ ! "$title" =~ $pattern ]]; then
   exit 1
 fi
 
+# Titles are English Conventional Commits. Perl is used because Bash regex
+# character classes depend on the runner locale.
+if printf '%s' "$title" | perl -CI -0777 -ne 'exit(/[\p{Han}\p{Hiragana}\p{Katakana}\p{Hangul}\x{3000}-\x{303F}\x{FF00}-\x{FFEF}]/ ? 0 : 1)'; then
+  printf 'check-pr-title: title must be English; CJK characters are not allowed\n' >&2
+  printf 'check-pr-title: got: %s\n' "$title" >&2
+  exit 1
+fi
+
 printf 'check-pr-title: ok\n'

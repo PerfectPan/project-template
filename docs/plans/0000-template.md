@@ -1,12 +1,12 @@
 # <Design title>
 
-Copy this file when starting a plan. Keep the sections that apply to a new system, a change, or a migration, and delete the rest. If an owner, reviewer, or date is unknown, write "unconfirmed". Do not invent them.
+Copy this file when starting a plan. A plan records the technical decisions (sections 1-5) and the detailed execution plan (section 6) for one deliverable. Keep the sections that apply to a new system, a change, or a migration, and delete the rest. If an owner, reviewer, or date is unknown, write "unconfirmed". Do not invent them.
 
 Writing and review rules live in the `technical-design-docs` skill when it is installed. This file is only the document shape.
 
 <!-- Keep the sections that apply to a new system, a change, or a migration. Merge sections in a small design and delete the rest. If an owner, reviewer, or date is unknown, write "unconfirmed". Do not invent them. -->
 
-- Status: draft / in review / accepted
+- Status: draft / blocked / in review / accepted
 - Owner: <name or team>
 - Reviewer: <name or team>
 - Last updated: <date>
@@ -102,25 +102,48 @@ State the trigger, the steps, the data impact, and the expected recovery time.
 
 ### 5.4 End-to-end acceptance
 
-## 6. Delivery plan and effort
+## 6. Execution plan
+
+An implementer should be able to follow this section without making new design decisions. Keep the Status `blocked` while a decision that changes scope, interfaces, data, or rollout is unresolved, and list it in section 7.
+
+### 6.1 Preconditions
+
+State what must be true before work starts: reviewed Spec and design, compatibility baseline, access, or upstream releases.
+
+### 6.2 Completion contract
+
+List the checkable conditions that make this plan done. Link each paired Spec scenario ID to the task and test that proves it.
+
+### 6.3 Execution order
+
+Order tasks so each one leaves the repository buildable and reviewable. Group tasks into batches that ship as one PR/MR.
+
+#### Task 1: <name>
+
+- Files: <paths to create, change, or delete>
+- Change: <what changes in each file and why>
+- Tests: <tests to add or update, with scenario IDs>
+- Exit condition: <command output or observable result that ends the task>
+
+### 6.4 Validation ledger
+
+| Batch | Command or evidence | Expected result |
+| --- | --- | --- |
+| <batch> | <exact command, log, or artifact> | <pass condition> |
+
+### 6.5 Rollback per batch
+
+State the smallest reversible batch, how to revert it, and any persisted-data or release-order constraint. Deployment rollback stays in 4.3.
+
+### 6.6 Work split and schedule
 
 Keep this when more than one person delivers the change. Mark unconfirmed owners and dates as "unconfirmed". Estimates must state their basis, assumptions, and dependencies. An estimate is not a team commitment.
 
-### 6.1 Work split
-
-| Component or domain | Change | Owner | Depends on | Effort |
+| Batch or component | Owner | Depends on | Effort | When |
 | --- | --- | --- | --- | --- |
-| <component> | <deliverable> | <owner> | <dependency> | <range or person-days> |
+| <batch> | <owner> | <dependency> | <range or person-days> | <range> |
 
-### 6.2 Schedule
-
-| Stage | Work | Precondition | When | Deliverable |
-| --- | --- | --- | --- | --- |
-| <stage> | <work> | <precondition> | <range> | <artifact or milestone> |
-
-### 6.3 Release order and milestones
-
-State cross-component compatibility, the required release order, and the milestones used to track progress.
+State cross-component compatibility and the required release order when batches ship separately.
 
 ## 7. Risks, open questions, and follow-up
 

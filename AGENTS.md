@@ -25,6 +25,9 @@ Keep the generic review commands active, and replace the remaining placeholders 
 # PR/MR title check:
 ./scripts/check-pr-title.sh "docs: update project template"
 
+# PR/MR description check (file or stdin):
+./scripts/check-pr-body.sh pr-body.md
+
 # GitHub repository setup dry run:
 ./scripts/configure-github-repository.sh --repo OWNER/REPO
 
@@ -48,7 +51,7 @@ Do not claim implementation work is complete until the relevant commands pass, o
 For non-trivial changes:
 
 1. Understand the requested behavior, affected domain concepts, ownership boundaries, and data flow.
-2. Follow the Spec/Plan selection rules in `CONTRIBUTING.md`. Review required design artifacts before implementation. Record technical decisions in the Plan and migrate lasting constraints to current-state documentation.
+2. Follow the Spec/Plan selection rules in `CONTRIBUTING.md`. Review required design artifacts before implementation. The Spec states required behavior; the Plan records technical decisions and the ordered tasks, tests, and exit conditions to execute. Do not start a Plan that is blocked on an unresolved decision. Migrate lasting constraints to current-state documentation.
 3. Keep the implementation scoped to the task and nearby code.
 4. Update tests and documentation when behavior, public contracts, or workflow expectations change.
 5. Ensure local Git hooks are installed for the checkout when practical.
@@ -60,6 +63,7 @@ For non-trivial changes:
 
 - Organize code by domain boundaries, layer boundaries, and test boundaries before mechanical one-file-per-export preferences.
 - Keep domain rules, application services, infrastructure adapters, UI/CLI entrypoints, persistence, and test fixtures separated when those responsibilities exist.
+- JavaScript or TypeScript projects take shared lint, format, and `tsconfig` rules from the `PerfectPan/lint-config` repository; see its README. Extend those shared configs instead of copying them.
 - Do not introduce a shared abstraction unless it removes real duplication, clarifies a boundary, or matches an existing project pattern.
 - When a file starts mixing multiple responsibilities or layers, split by responsibility rather than by arbitrary size.
 - Substantial product behavior uses one Spec plus one detailed Plan. Technical refactors use a Plan. Record technical choices there before implementation.
@@ -68,7 +72,7 @@ For non-trivial changes:
 
 - Keep `README.md` focused on orientation, quick start, and current user-facing behavior.
 - Use `CONTRIBUTING.md` for contribution workflow.
-- Use `specs/` for active product behavior and `docs/plans/` for active technical designs. Current-state documentation owns implemented behavior.
+- Use `specs/` for active product behavior and `docs/plans/` for active technical decisions and detailed execution plans. Current-state documentation owns implemented behavior.
 - Use `docs/` for durable current-state knowledge such as architecture, development guides, operational runbooks, references, and onboarding tutorials.
 - Update `CHANGELOG.md` for user-facing changes unless the change is docs-only or repository-only.
 - When behavior, configuration, commands, APIs, deployment, architecture, or operations change, update the relevant docs in the same PR/MR or explain why no docs changed.
@@ -87,8 +91,8 @@ When an AI agent completes implementation work:
 
 ## Review Evidence
 
-- PR/MR titles must follow `type(scope): summary`; use `scripts/check-pr-title.sh` to verify them.
-- PR/MR descriptions must include motivation, implementation notes, exact validation commands, skipped gates with reasons, and follow-up risks.
+- PR/MR titles must be English and follow `type(scope): summary`, including bot-generated release and dependency PRs such as `chore(release): version packages`; use `scripts/check-pr-title.sh` to verify them.
+- PR/MR descriptions must keep every template section and include motivation, implementation notes, exact validation commands, skipped gates with reasons, and follow-up risks. Do not add agent attribution lines such as "Generated with <tool>". Verify the body with `scripts/check-pr-body.sh` before opening or updating the PR/MR. Bot-opened PRs are exempt from the description check, not the title check.
 - If a claim depends on logs, screenshots, package output, deployed behavior, or generated artifacts, attach or link the evidence in the PR/MR.
 - Update the PR/MR description after substantial code changes, review-driven revisions, rebases that change behavior, or validation reruns.
 - Keep GitHub PR and GitLab MR templates in sync if the project uses both hosting styles.
