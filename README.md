@@ -25,7 +25,7 @@ Use this template when creating a new project that should have consistent contri
    ```
 
 9. Choose a release tool (changesets or Rush change files) before the first release; it generates package changelogs. See `CONTRIBUTING.md` Release Notes.
-10. `LICENSE` is GPL-3.0-only by default; set `GPL-3.0-only` in package metadata and change it only as a deliberate decision.
+10. Pick the license by project type: tools and libraries keep the MIT `LICENSE`; applications switch to GPL-3.0-only. See `CONTRIBUTING.md` License.
 
 ## Included
 
@@ -51,7 +51,7 @@ Use this template when creating a new project that should have consistent contri
 
 ## License
 
-GPL-3.0-only. See [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE). Projects created from this template choose their own license; see step 10 above.
 
 ## Template Maintenance
 

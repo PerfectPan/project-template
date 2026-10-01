@@ -162,7 +162,12 @@ Release notes come from the release tool. Packages released with changesets or R
 
 ## License
 
-The project is licensed under GPL-3.0-only (`LICENSE`). Distributing the software or a modified version requires releasing its source under the same license. Package metadata uses the SPDX identifier `GPL-3.0-only`. Change the license only as a deliberate project decision, and keep third-party notices for code or data copied from other projects.
+Choose the license by project type when the repository is created:
+
+- Applications (services, desktop or web apps, agents) use GPL-3.0-only, so distributed modifications stay open source. Replace `LICENSE` with the GPL text (`gh api licenses/gpl-3.0 --jq .body > LICENSE`) and set package metadata to `GPL-3.0-only`.
+- Tools and libraries (CLIs, packages, configs, templates) use MIT, which this template ships in `LICENSE`. Package metadata uses `MIT`.
+
+Record the choice in the README. Change it later only as a deliberate project decision, and keep third-party notices for code or data copied from other projects.
 
 ## Repository Checks
 
