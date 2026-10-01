@@ -2,7 +2,8 @@
 
 ## Unreleased
 
-- Workflows pin `actions/checkout` to the v7.0.1 commit SHA; downstream repositories take action bumps from this template instead of editing `review.yml` locally.
+- Workflows use `actions/checkout@v7`; actions are referenced by their latest major version tag, not a commit SHA. Downstream repositories take action upgrades from this template instead of editing `review.yml` locally.
+- Specs moved from `specs/` to `docs/specs/`, next to `docs/plans/`.
 - `configure-github-repository.sh` accepts `--approvals N` (use 0 for a single maintainer) and repeatable `--check NAME` for project CI jobs.
 - Removed trailing blank lines that failed `git diff --cached --check` in repositories copying the template files.
 - Plans now pair technical decisions with a detailed execution plan: preconditions, completion contract, ordered tasks with exit conditions, validation ledger, and rollback per batch.
