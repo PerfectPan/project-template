@@ -179,7 +179,7 @@ The review checks come from [`PerfectPan/gh-repo-checks`](https://github.com/Per
 
 Run `gh repo-checks repository` locally before opening review. This generic check does not replace stack-specific tests, but it catches missing template files, tracked local artifacts, obvious secrets, private paths, and drift in review templates.
 
-Workflows reference actions by their latest major version tag, such as `actions/checkout@v7`, not by commit SHA. Workflow files copied from this template take action upgrades from the template rather than local edits.
+Workflows reference actions by their latest major version tag, such as `actions/checkout@v7`, not by commit SHA. Runtimes in CI and version files follow the current LTS line of the language, such as the Node.js Active LTS major, and move to the next LTS line in one change when it starts. Workflow files copied from this template take action upgrades from the template rather than local edits.
 
 ## Local Git Hooks
 
