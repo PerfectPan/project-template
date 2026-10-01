@@ -16,9 +16,9 @@ Allowed types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `buil
 
 ## Validation
 
-- [ ] Repository checks: `./scripts/check-repository.sh`
-- [ ] PR title: `./scripts/check-pr-title.sh "<title>"`
-- [ ] PR description: `./scripts/check-pr-body.sh <body-file>`
+- [ ] Repository checks: `gh repo-checks repository`
+- [ ] PR title: `gh repo-checks pr-title "<title>"`
+- [ ] PR description: `gh repo-checks pr-body <body-file>`
 - [ ] Format:
 - [ ] Lint:
 - [ ] Test:
