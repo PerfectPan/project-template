@@ -35,7 +35,7 @@ Use this template when creating a new project that should have consistent contri
 - `SECURITY.md` for vulnerability and sensitive data reporting.
 - `docs/README.md` for architecture, development, operations, and reference documentation standards.
 - `.github/pull_request_template.md` for PR summaries and validation.
-- `.github/ISSUE_TEMPLATE/` for bug and feature reports.
+- `.github/ISSUE_TEMPLATE/` for bug reports, feature requests, and tasks; each sets a `[Bug]:`, `[Feature]:`, or `[Task]:` title prefix and the matching label.
 - `.github/workflows/review.yml` for the repository, PR title, and PR description checks from [`PerfectPan/gh-repo-checks`](https://github.com/PerfectPan/gh-repo-checks).
 - `.githooks/pre-commit` for local commit-time repository checks.
 - `.gitlab/merge_request_templates/default.md` for GitLab-style MR summaries.
