@@ -58,7 +58,7 @@ For non-trivial changes:
 5. Ensure local Git hooks are installed for the checkout when practical.
 6. Run repository checks, title checks, and project-specific validation gates.
 7. For a newly created GitHub repository, configure branch protection with `gh repo-checks protect --repo OWNER/REPO --apply` using an admin-authorized account.
-8. Open or update the PR/MR with motivation, implementation notes, exact validation, skipped gates, evidence, and risks.
+8. Open or update the PR/MR with a summary of what changed and why, the exact validation and skipped gates, and any risks.
 
 ## Repository Architecture
 
@@ -88,12 +88,12 @@ When an AI agent completes implementation work:
 4. Commit pending changes with a concise conventional commit message.
 5. Push the branch and verify the remote head.
 6. Create or reuse a GitHub Pull Request when the task is not landing directly on `main`.
-7. Include a delivery summary with motivation, implementation notes, validation, and follow-up risks.
+7. Include a delivery summary with what changed and why, validation, and remaining risks.
 
 ## Review Evidence
 
 - PR/MR titles must be English and follow `type(scope): summary`, including bot-generated release and dependency PRs such as `chore(release): version packages`; use `gh repo-checks pr-title` to verify them.
-- PR/MR descriptions must keep every template section and include motivation, implementation notes, exact validation commands, skipped gates with reasons, and follow-up risks. Do not add agent attribution lines such as "Generated with <tool>". Verify the body with `gh repo-checks pr-body` before opening or updating the PR/MR. Bot-opened PRs are exempt from the description check, not the title check.
+- PR/MR descriptions must have a Summary (what changed and why) and a Validation section (exact commands and results, skipped gates with reasons); add Risks when there are any. Do not add agent attribution lines such as "Generated with <tool>". Verify the body with `gh repo-checks pr-body` before opening or updating the PR/MR. Bot-opened PRs are exempt from the description check, not the title check.
 - If a claim depends on logs, screenshots, package output, deployed behavior, or generated artifacts, attach or link the evidence in the PR/MR.
 - Update the PR/MR description after substantial code changes, review-driven revisions, rebases that change behavior, or validation reruns.
 - Keep GitHub PR and GitLab MR templates in sync if the project uses both hosting styles.

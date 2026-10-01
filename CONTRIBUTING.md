@@ -37,7 +37,7 @@ gh repo-checks protect --repo OWNER/REPO
 8. Update `README.md`, `docs/`, `AGENTS.md`, `CONTRIBUTING.md`, or the active Spec and Plan when user-facing behavior, architecture, development workflow, operations, or project policy changes.
 9. Run repository checks, title checks, and project-specific format, lint, test, build, and package checks.
 10. For a newly created GitHub repository, run `gh repo-checks protect --apply` with an admin-authorized account.
-11. Open a pull request or merge request with a conventional title, motivation, implementation notes, validation, evidence, skipped gates, and follow-up risks.
+11. Open a pull request or merge request with a conventional title, a summary of what changed and why, validation with skipped gates, and any risks.
 12. Keep the PR/MR description current after review feedback, rebases, validation reruns, or scope changes.
 
 Small typo corrections, narrow documentation fixes, and repository metadata updates do not need a separate Spec and Plan.
@@ -133,14 +133,11 @@ Follow `docs/README.md` when adding or reorganizing project documentation. Updat
 
 ## Pull Request Expectations
 
-Every PR or MR should answer:
+The PR/MR template has three sections:
 
-- What changed?
-- Why is this change needed?
-- How was this tested?
-- Are there follow-up tasks or risks?
-- What evidence proves the behavior, packaging, or deployment claim?
-- Which validation gates were skipped, and why?
+- **Summary**: what changed and why, with links to the issue, Spec, or Plan.
+- **Validation**: the commands you ran and their results, evidence for behavior or packaging claims, and skipped gates with reasons.
+- **Risks** (optional): compatibility, rollout, rollback, or follow-up risks. Delete it when there are none.
 
 Use a conventional title:
 
@@ -152,7 +149,7 @@ Allowed types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `buil
 
 Titles are English; `gh repo-checks pr-title` rejects CJK characters. Bot-generated PRs follow the same rule, so configure release and dependency bots to emit titles such as `chore(release): version packages` or `chore(deps): bump <package> to <version>`.
 
-The description keeps every `##` section from the PR/MR template. Summary and Validation must contain real content, not template placeholders. Do not include agent attribution lines such as "Generated with <tool>"; the author is accountable for the content. `gh repo-checks pr-body` enforces these rules, and the `PR description` job runs it on every pull request event, including description edits. PRs opened by bot accounts skip the description check, because dependency and release bots write their own bodies; they still must pass the title check. A skipped job still satisfies the required status check.
+Summary and Validation must be present and contain real content, not template placeholders; other sections are optional. Do not include agent attribution lines such as "Generated with <tool>"; the author is accountable for the content. `gh repo-checks pr-body` enforces these rules, and the `PR description` job runs it on every pull request event, including description edits. PRs opened by bot accounts skip the description check, because dependency and release bots write their own bodies; they still must pass the title check. A skipped job still satisfies the required status check.
 
 Update the description when review feedback, rebases, or follow-up commits change the scope or validation result. Reviewers should be able to understand the final state from the PR/MR without reconstructing it from comments.
 
