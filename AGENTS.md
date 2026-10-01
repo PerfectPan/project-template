@@ -74,7 +74,7 @@ For non-trivial changes:
 - Use `CONTRIBUTING.md` for contribution workflow.
 - Use `docs/specs/` for active product behavior and `docs/plans/` for active technical decisions and detailed execution plans. Current-state documentation owns implemented behavior.
 - Use `docs/` for durable current-state knowledge such as architecture, development guides, operational runbooks, references, and onboarding tutorials.
-- Update `CHANGELOG.md` for user-facing changes unless the change is docs-only or repository-only.
+- Record user-facing changes with the release tool's change files (changesets or Rush) in the same PR; do not edit generated changelogs or add a hand-written root `CHANGELOG.md`.
 - When behavior, configuration, commands, APIs, deployment, architecture, or operations change, update the relevant docs in the same PR/MR or explain why no docs changed.
 
 ## AI Delivery Workflow

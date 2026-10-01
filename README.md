@@ -24,8 +24,8 @@ Use this template when creating a new project that should have consistent contri
    ./scripts/configure-github-repository.sh --repo OWNER/REPO --apply
    ```
 
-9. Update `CHANGELOG.md` for the first release.
-10. Keep or replace `LICENSE` according to the project needs.
+9. Choose a release tool (changesets or Rush change files) before the first release; it generates package changelogs. See `CONTRIBUTING.md` Release Notes.
+10. `LICENSE` is GPL-3.0-only by default; set `GPL-3.0-only` in package metadata and change it only as a deliberate decision.
 
 ## Included
 
@@ -48,6 +48,10 @@ Use this template when creating a new project that should have consistent contri
 - `scripts/install-git-hooks.sh` for installing local Git hooks.
 - `scripts/configure-github-repository.sh` for post-create GitHub branch protection setup.
 - `.editorconfig` for consistent text formatting.
+
+## License
+
+GPL-3.0-only. See [LICENSE](LICENSE).
 
 ## Template Maintenance
 
