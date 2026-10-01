@@ -92,7 +92,7 @@ Every change needs a requirement record. Use the smallest set of artifacts that 
 | Technical refactor without changed user behavior | Detailed Plan with compatibility and acceptance conditions |
 | Narrow maintenance, tests, or documentation | Requirement and PR checklist; a separate Plan only when useful |
 
-A Spec defines observable interactions, scope, failure behavior, and acceptance examples. Use stable scenario IDs and Given/When/Then where useful. Link scenarios to tests. A Spec does not prescribe components, interfaces, or execution order. Keep active Specs under [`specs/`](specs/). A small change may keep both sections in the PR description. Split only when each slice has an independently demonstrable outcome.
+A Spec defines observable interactions, scope, failure behavior, and acceptance examples. Use stable scenario IDs and Given/When/Then where useful. Link scenarios to tests. A Spec does not prescribe components, interfaces, or execution order. Keep active Specs under [`docs/specs/`](docs/specs/). A small change may keep both sections in the PR description. Split only when each slice has an independently demonstrable outcome.
 
 A Plan records technical decisions and the detailed execution plan that implements them. Shared architecture, compatibility, security, and recovery decisions belong in a reviewed Plan. After implementation, move lasting constraints into current-state architecture or operations docs. This template does not keep an RFC directory. Removing a proposal does not mark unimplemented ideas as delivered.
 
@@ -125,7 +125,7 @@ Keep each documentation surface focused:
 - Use `README.md` for orientation, quick start, and current user-facing behavior.
 - Use `CONTRIBUTING.md` for contribution workflow, review expectations, and repository policy.
 - Use `AGENTS.md` for AI-agent instructions.
-- Use `specs/` for active product behavior and acceptance contracts.
+- Use `docs/specs/` for active product behavior and acceptance contracts.
 - Use `docs/plans/` for active technical decisions and detailed execution plans. Migrate lasting decisions into current-state docs.
 - Use `docs/` for durable current-state knowledge: architecture, development guides, operational runbooks, references, and onboarding tutorials.
 
@@ -163,6 +163,8 @@ Do not commit private tokens, local config, generated workspaces, internal hostn
 Keep package or deploy contents intentional. If a file should ship, verify it appears in the package or deployment dry-run.
 
 Run `./scripts/check-repository.sh` locally before opening review. This generic check does not replace stack-specific tests, but it catches missing template files, tracked local artifacts, obvious secrets, private paths, and drift in review templates.
+
+Workflows reference actions by their latest major version tag, such as `actions/checkout@v7`, not by commit SHA. Workflow files copied from this template take action upgrades from the template rather than local edits.
 
 ## Local Git Hooks
 
