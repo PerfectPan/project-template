@@ -30,8 +30,7 @@ Use this template when creating a new project that should have consistent contri
 
 ## Included
 
-- `AGENTS.md` for agent workflow rules.
-- `CLAUDE.md` for Claude Code entrypoint instructions.
+- `AGENTS.md` for agent workflow rules. Claude Code, Codex and other agents read it directly, so there is no separate `CLAUDE.md`.
 - `CONTRIBUTING.md` for human contribution flow.
 - `SECURITY.md` for vulnerability and sensitive data reporting.
 - `docs/README.md` for architecture, development, operations, and reference documentation standards.
