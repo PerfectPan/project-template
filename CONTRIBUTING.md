@@ -73,6 +73,29 @@ gh repo-checks protect --repo OWNER/REPO
 # Package or release dry-run:
 ```
 
+## CI Execution Policy
+
+The full CI example in `.github/workflows/ci.yml.example` runs for Ready PRs when they are opened, updated with
+new commits (`synchronize`), reopened, or changed from Draft to Ready. The job skips Draft PR events. Keep the
+existing `push` to `main` trigger, and preserve any project-specific manual or other necessary triggers when
+adopting this policy; the Draft condition applies only to pull requests. Replace the placeholder command with
+the project's real checks before treating the example as runnable CI.
+
+Keep work in Draft until local checks are finished. GitHub reports a skipped job as successful, even when it is
+required by branch protection; this is not evidence that tests ran. After marking a PR Ready, confirm the full
+CI job actually executed and passed for the current head and merge result before merging. Existing release PR
+flows that return to Draft after version updates keep their maintainer-controlled Ready step.
+
+The separate `Review` workflow is intentionally lightweight: repository hygiene, title and description checks.
+Keep it active on Draft PRs and metadata edits so authors get feedback before requesting full CI. Bot authors
+remain exempt only from the description check. Full CI has no metadata-edit trigger; follow the project's
+instructions for refreshing checks after metadata-only or base-only changes.
+
+Template files do not configure branch protection or rulesets. Preserve the repository's required check names
+and inspect its current merge requirements when adopting this policy; a skipped full-CI check must not be used
+as proof that a Ready PR is safe to merge. See [Repository Setup](#repository-setup) for separately authorized
+repository configuration.
+
 ## SDD Workflow And Document Lifecycle
 
 1. Record the problem, affected users or maintainers, in-scope behavior, non-goals, and acceptance conditions.
