@@ -33,14 +33,13 @@ Use this template when creating a new project that should have consistent contri
 - `AGENTS.md` for agent workflow rules. Claude Code, Codex and other agents read it directly, so there is no separate `CLAUDE.md`.
 - `CONTRIBUTING.md` for human contribution flow.
 - `SECURITY.md` for vulnerability and sensitive data reporting.
-- `docs/README.md` for architecture, development, operations, and reference documentation standards.
+- `docs/README.md` for user guides, reference, architecture, and development documentation standards.
 - `.github/pull_request_template.md` for PR summaries and validation.
 - `.github/ISSUE_TEMPLATE/` for bug reports, feature requests, and tasks; each sets a `[Bug]:`, `[Feature]:`, or `[Task]:` title prefix and the matching label.
 - `.github/workflows/review.yml` for the repository, PR title, and PR description checks from [`PerfectPan/gh-repo-checks`](https://github.com/PerfectPan/gh-repo-checks).
 - `.githooks/pre-commit` for local commit-time repository checks.
 - `.gitlab/merge_request_templates/default.md` for GitLab-style MR summaries.
-- `docs/specs/0000-template.md` for active product behavior.
-- `docs/plans/0000-template.md` for active technical decisions and detailed execution plans.
+- `docs/plans/0000-template.md` for active implementation plans on non-trivial changes.
 - `.github/repo-checks.conf` for this repository's additions to the shared repository check.
 - `scripts/install-git-hooks.sh` for installing local Git hooks.
 - `.editorconfig` for consistent text formatting.
@@ -53,4 +52,4 @@ MIT. See [LICENSE](LICENSE). Projects created from this template choose their ow
 
 Keep this repository generic. Do not add language-specific package files, framework defaults, generated output, or project-specific business logic.
 
-Keep collaboration policy in `AGENTS.md` and `CONTRIBUTING.md`, active behavior in `docs/specs/`, active technical decisions and execution plans in `docs/plans/`, and current product or engineering knowledge in `docs/`.
+Keep collaboration policy in `AGENTS.md` and `CONTRIBUTING.md`, active implementation plans in `docs/plans/` (retired when code lands), and durable non-code knowledge in `docs/`.
